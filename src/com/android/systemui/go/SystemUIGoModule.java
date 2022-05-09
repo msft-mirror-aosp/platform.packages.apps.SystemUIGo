@@ -27,6 +27,7 @@ import android.os.PowerManager;
 import com.android.keyguard.KeyguardViewController;
 import com.android.systemui.broadcast.BroadcastDispatcher;
 import com.android.systemui.dagger.GlobalRootComponent;
+import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
@@ -38,7 +39,6 @@ import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.plugins.qs.QSFactory;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.power.EnhancedEstimates;
-import com.android.systemui.power.EnhancedEstimatesImpl;
 import com.android.systemui.power.dagger.PowerModule;
 import com.android.systemui.qs.dagger.QSModule;
 import com.android.systemui.qs.tileimpl.QSFactoryImpl;
@@ -48,7 +48,7 @@ import com.android.systemui.statusbar.CommandQueue;
 import com.android.systemui.statusbar.NotificationLockscreenUserManager;
 import com.android.systemui.statusbar.NotificationLockscreenUserManagerImpl;
 import com.android.systemui.statusbar.NotificationShadeWindowController;
-import com.android.systemui.statusbar.dagger.StartStatusBarModule;
+import com.android.systemui.statusbar.dagger.StartCentralSurfacesModule;
 import com.android.systemui.statusbar.notification.NotificationEntryManager;
 import com.android.systemui.statusbar.notification.collection.provider.VisualStabilityProvider;
 import com.android.systemui.statusbar.notification.collection.render.GroupMembershipManager;
@@ -81,13 +81,13 @@ import dagger.Provides;
 
 /**
  * A dagger module for overriding the default implementations of injected System UI components on
- * Android Go. This is forked from {@link com.android.systemui.dagger.SystemUIDefaultModule}
+ * Android Go. This is forked from {@link ReferenceSystemUIModule}
  */
 @Module(includes = {
         MediaModule.class,
         PowerModule.class,
         QSModule.class,
-        StartStatusBarModule.class,
+        StartCentralSurfacesModule.class,
         VolumeModule.class
 })
 public abstract class SystemUIGoModule {
@@ -102,9 +102,6 @@ public abstract class SystemUIGoModule {
     static String provideLeakReportEmail() {
         return "buganizer-system+700073@google.com";
     }
-
-    @Binds
-    abstract EnhancedEstimates bindEnhancedEstimates(EnhancedEstimatesImpl enhancedEstimates);
 
     @Binds
     abstract NotificationLockscreenUserManager bindNotificationLockscreenUserManager(
