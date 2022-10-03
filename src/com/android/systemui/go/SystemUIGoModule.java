@@ -24,6 +24,7 @@ import android.hardware.SensorPrivacyManager;
 import android.os.Handler;
 import android.os.PowerManager;
 
+import com.android.internal.logging.UiEventLogger;
 import com.android.keyguard.KeyguardViewController;
 import com.android.systemui.broadcast.BroadcastDispatcher;
 import com.android.systemui.dagger.GlobalRootComponent;
@@ -35,6 +36,7 @@ import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
+import com.android.systemui.dump.DumpManager;
 import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.navigationbar.gestural.GestureModule;
 import com.android.systemui.plugins.qs.QSFactory;
@@ -51,17 +53,16 @@ import com.android.systemui.statusbar.NotificationLockscreenUserManager;
 import com.android.systemui.statusbar.NotificationLockscreenUserManagerImpl;
 import com.android.systemui.statusbar.NotificationShadeWindowController;
 import com.android.systemui.statusbar.dagger.StartCentralSurfacesModule;
-import com.android.systemui.statusbar.notification.NotificationEntryManager;
 import com.android.systemui.statusbar.notification.collection.provider.VisualStabilityProvider;
 import com.android.systemui.statusbar.notification.collection.render.GroupMembershipManager;
 import com.android.systemui.statusbar.phone.DozeServiceHost;
 import com.android.systemui.statusbar.phone.HeadsUpManagerPhone;
 import com.android.systemui.statusbar.phone.KeyguardBypassController;
-import com.android.systemui.statusbar.phone.KeyguardEnvironmentImpl;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeController;
 import com.android.systemui.shade.ShadeControllerImpl;
 import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
+import com.android.systemui.statusbar.policy.AccessibilityManagerWrapper;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.BatteryControllerImpl;
 import com.android.systemui.statusbar.policy.ConfigurationController;
@@ -119,6 +120,7 @@ public abstract class SystemUIGoModule {
             PowerManager powerManager,
             BroadcastDispatcher broadcastDispatcher,
             DemoModeController demoModeController,
+            DumpManager dumpManager,
             @Main Handler mainHandler,
             @Background Handler bgHandler) {
         BatteryController bC = new BatteryControllerImpl(
@@ -127,6 +129,7 @@ public abstract class SystemUIGoModule {
                 powerManager,
                 broadcastDispatcher,
                 demoModeController,
+                dumpManager,
                 mainHandler,
                 bgHandler);
         bC.init();
@@ -160,10 +163,6 @@ public abstract class SystemUIGoModule {
     abstract DockManager bindDockManager(DockManagerImpl dockManager);
 
     @Binds
-    abstract NotificationEntryManager.KeyguardEnvironment bindKeyguardEnvironment(
-            KeyguardEnvironmentImpl keyguardEnvironment);
-
-    @Binds
     abstract ShadeController provideShadeController(ShadeControllerImpl shadeController);
 
     @SysUISingleton
@@ -182,7 +181,10 @@ public abstract class SystemUIGoModule {
             KeyguardBypassController bypassController,
             GroupMembershipManager groupManager,
             VisualStabilityProvider visualStabilityProvider,
-            ConfigurationController configurationController) {
+            ConfigurationController configurationController,
+            @Main Handler handler,
+            AccessibilityManagerWrapper accessibilityManagerWrapper,
+            UiEventLogger uiEventLogger) {
         return new HeadsUpManagerPhone(
                 context,
                 headsUpManagerLogger,
@@ -190,7 +192,10 @@ public abstract class SystemUIGoModule {
                 bypassController,
                 groupManager,
                 visualStabilityProvider,
-                configurationController
+                configurationController,
+                handler,
+                accessibilityManagerWrapper,
+                uiEventLogger
         );
     }
 
