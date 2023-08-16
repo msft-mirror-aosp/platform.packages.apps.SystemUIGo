@@ -23,6 +23,7 @@ import com.android.systemui.ScreenDecorations;
 import com.android.systemui.SliceBroadcastRelayHandler;
 import com.android.systemui.accessibility.SystemActions;
 import com.android.systemui.accessibility.WindowMagnification;
+import com.android.systemui.back.domain.interactor.BackActionInteractor;
 import com.android.systemui.biometrics.AuthController;
 import com.android.systemui.clipboardoverlay.ClipboardListener;
 import com.android.systemui.dagger.qualifiers.PerUser;
@@ -215,4 +216,10 @@ abstract class SystemUIGoCoreStartableModule {
     @IntoMap
     @ClassKey(StatusBarHeadsUpChangeListener.class)
     abstract CoreStartable bindStatusBarHeadsUpChangeListener(StatusBarHeadsUpChangeListener impl);
+
+    /** Inject into BackActionInteractor. */
+    @Binds
+    @IntoMap
+    @ClassKey(BackActionInteractor.class)
+    abstract CoreStartable bindBackActionInteractor(BackActionInteractor backActionInteractor);
 }
