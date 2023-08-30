@@ -59,6 +59,7 @@ import com.android.systemui.statusbar.phone.DozeServiceHost;
 import com.android.systemui.statusbar.phone.HeadsUpManagerPhone;
 import com.android.systemui.statusbar.phone.KeyguardBypassController;
 import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
+import com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragmentStartableModule;
 import com.android.systemui.statusbar.policy.AccessibilityManagerWrapper;
 import com.android.systemui.statusbar.policy.AospPolicyModule;
 import com.android.systemui.statusbar.policy.ConfigurationController;
@@ -85,6 +86,7 @@ import dagger.Provides;
  */
 @Module(includes = {
         AospPolicyModule.class,
+        CollapsedStatusBarFragmentStartableModule.class,
         GestureModule.class,
         MediaModule.class,
         MultiUserUtilsModule.class,
