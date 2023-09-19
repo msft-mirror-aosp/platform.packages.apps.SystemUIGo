@@ -34,6 +34,7 @@ import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
 import com.android.systemui.globalactions.ShutdownUiModule;
 import com.android.systemui.media.dagger.MediaModule;
+import com.android.systemui.navigationbar.NavigationBarControllerModule;
 import com.android.systemui.navigationbar.gestural.GestureModule;
 import com.android.systemui.plugins.qs.QSFactory;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
@@ -90,6 +91,7 @@ import dagger.Provides;
         GestureModule.class,
         MediaModule.class,
         MultiUserUtilsModule.class,
+        NavigationBarControllerModule.class,
         PowerModule.class,
         QSModule.class,
         ReferenceScreenshotModule.class,
