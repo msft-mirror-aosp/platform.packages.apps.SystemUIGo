@@ -23,6 +23,7 @@ import com.android.systemui.ScreenDecorations;
 import com.android.systemui.SliceBroadcastRelayHandler;
 import com.android.systemui.accessibility.SystemActions;
 import com.android.systemui.accessibility.WindowMagnification;
+import com.android.systemui.back.domain.interactor.BackActionInteractor;
 import com.android.systemui.biometrics.AuthController;
 import com.android.systemui.clipboardoverlay.ClipboardListener;
 import com.android.systemui.dagger.qualifiers.PerUser;
@@ -37,6 +38,7 @@ import com.android.systemui.shortcut.ShortcutKeyDispatcher;
 import com.android.systemui.statusbar.notification.InstantAppNotifier;
 import com.android.systemui.statusbar.phone.LockscreenWallpaper;
 import com.android.systemui.statusbar.phone.ScrimController;
+import com.android.systemui.statusbar.phone.StatusBarHeadsUpChangeListener;
 import com.android.systemui.theme.ThemeOverlayController;
 import com.android.systemui.toast.ToastUI;
 import com.android.systemui.usb.StorageNotification;
@@ -209,4 +211,15 @@ abstract class SystemUIGoCoreStartableModule {
     @IntoMap
     @ClassKey(ScrimController.class)
     abstract CoreStartable bindScrimController(ScrimController scrimController);
+
+    @Binds
+    @IntoMap
+    @ClassKey(StatusBarHeadsUpChangeListener.class)
+    abstract CoreStartable bindStatusBarHeadsUpChangeListener(StatusBarHeadsUpChangeListener impl);
+
+    /** Inject into BackActionInteractor. */
+    @Binds
+    @IntoMap
+    @ClassKey(BackActionInteractor.class)
+    abstract CoreStartable bindBackActionInteractor(BackActionInteractor backActionInteractor);
 }
