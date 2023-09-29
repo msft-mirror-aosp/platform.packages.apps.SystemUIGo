@@ -25,6 +25,7 @@ import android.os.Handler;
 
 import com.android.internal.logging.UiEventLogger;
 import com.android.keyguard.KeyguardViewController;
+import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.dagger.GlobalRootComponent;
 import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
@@ -43,6 +44,7 @@ import com.android.systemui.qs.dagger.QSModule;
 import com.android.systemui.qs.tileimpl.QSFactoryImpl;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsImplementation;
+import com.android.systemui.rotationlock.RotationLockModule;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
 import com.android.systemui.settings.dagger.MultiUserUtilsModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
@@ -87,6 +89,7 @@ import dagger.Provides;
  */
 @Module(includes = {
         AospPolicyModule.class,
+        BatterySaverModule.class,
         CollapsedStatusBarFragmentStartableModule.class,
         GestureModule.class,
         MediaModule.class,
@@ -95,6 +98,7 @@ import dagger.Provides;
         PowerModule.class,
         QSModule.class,
         ReferenceScreenshotModule.class,
+        RotationLockModule.class,
         ShadeModule.class,
         ShutdownUiModule.class,
         StartCentralSurfacesModule.class,
