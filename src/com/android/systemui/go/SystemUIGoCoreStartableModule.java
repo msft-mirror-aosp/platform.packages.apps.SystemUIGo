@@ -36,7 +36,6 @@ import com.android.systemui.power.PowerUI;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.shortcut.ShortcutKeyDispatcher;
 import com.android.systemui.statusbar.notification.InstantAppNotifier;
-import com.android.systemui.statusbar.phone.LockscreenWallpaper;
 import com.android.systemui.statusbar.phone.ScrimController;
 import com.android.systemui.statusbar.phone.StatusBarHeadsUpChangeListener;
 import com.android.systemui.theme.ThemeOverlayController;
@@ -199,12 +198,6 @@ abstract class SystemUIGoCoreStartableModule {
     @IntoMap
     @ClassKey(WMShell.class)
     abstract CoreStartable bindWMShell(WMShell wmShell);
-
-    /** Inject into LocskcreenWallpaper. */
-    @Binds
-    @IntoMap
-    @ClassKey(LockscreenWallpaper.class)
-    abstract CoreStartable bindLockscreenWallpaper(LockscreenWallpaper lockscreenWallpaper);
 
     /** Inject into ScrimController. */
     @Binds
