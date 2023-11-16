@@ -22,7 +22,7 @@ import com.android.systemui.LatencyTester;
 import com.android.systemui.ScreenDecorations;
 import com.android.systemui.SliceBroadcastRelayHandler;
 import com.android.systemui.accessibility.SystemActions;
-import com.android.systemui.accessibility.WindowMagnification;
+import com.android.systemui.accessibility.Magnification;
 import com.android.systemui.back.domain.interactor.BackActionInteractor;
 import com.android.systemui.biometrics.AuthController;
 import com.android.systemui.clipboardoverlay.ClipboardListener;
@@ -187,11 +187,11 @@ abstract class SystemUIGoCoreStartableModule {
     @ClassKey(VolumeUI.class)
     abstract CoreStartable bindVolumeUI(VolumeUI volumeUi);
 
-    /** Inject into WindowMagnification. */
+    /** Inject into Magnification. */
     @Binds
     @IntoMap
-    @ClassKey(WindowMagnification.class)
-    abstract CoreStartable bindWindowMagnification(WindowMagnification windowMagnification);
+    @ClassKey(Magnification.class)
+    abstract CoreStartable bindMagnification(Magnification magnification);
 
     /** Inject into WMShell. */
     @Binds
