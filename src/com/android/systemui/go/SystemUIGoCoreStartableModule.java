@@ -29,6 +29,7 @@ import com.android.systemui.clipboardoverlay.ClipboardListener;
 import com.android.systemui.dagger.qualifiers.PerUser;
 import com.android.systemui.globalactions.GlobalActionsComponent;
 import com.android.systemui.keyboard.KeyboardUI;
+import com.android.systemui.keyguard.KeyguardViewConfigurator;
 import com.android.systemui.keyguard.KeyguardViewMediator;
 import com.android.systemui.log.SessionTracker;
 import com.android.systemui.media.RingtonePlayer;
@@ -198,6 +199,11 @@ abstract class SystemUIGoCoreStartableModule {
     @IntoMap
     @ClassKey(WMShell.class)
     abstract CoreStartable bindWMShell(WMShell wmShell);
+
+    @Binds
+    @IntoMap
+    @ClassKey(KeyguardViewConfigurator.class)
+    abstract CoreStartable bindKeyguardViewConfigurator(KeyguardViewConfigurator impl);
 
     /** Inject into ScrimController. */
     @Binds
