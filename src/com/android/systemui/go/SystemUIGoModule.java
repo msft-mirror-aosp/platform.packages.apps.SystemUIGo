@@ -34,6 +34,7 @@ import com.android.systemui.display.ui.viewmodel.ConnectingDisplayViewModel;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
+import com.android.systemui.globalactions.ShutdownUiModule;
 import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.media.muteawait.MediaMuteAwaitConnectionCli;
 import com.android.systemui.media.nearby.NearbyMediaDevicesManager;
@@ -102,6 +103,7 @@ import javax.inject.Named;
         RotationLockModule.class,
         ScreenDecorationsModule.class,
         ShadeModule.class,
+        ShutdownUiModule.class,
         StartCentralSurfacesModule.class,
         SystemActionsModule.class,
         SysUIUnfoldStartableModule.class,
