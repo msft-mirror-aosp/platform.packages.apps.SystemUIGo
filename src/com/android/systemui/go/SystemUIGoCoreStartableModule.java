@@ -22,12 +22,14 @@ import com.android.systemui.LatencyTester;
 import com.android.systemui.ScreenDecorations;
 import com.android.systemui.SliceBroadcastRelayHandler;
 import com.android.systemui.accessibility.SystemActions;
-import com.android.systemui.accessibility.WindowMagnification;
+import com.android.systemui.accessibility.Magnification;
+import com.android.systemui.back.domain.interactor.BackActionInteractor;
 import com.android.systemui.biometrics.AuthController;
 import com.android.systemui.clipboardoverlay.ClipboardListener;
 import com.android.systemui.dagger.qualifiers.PerUser;
 import com.android.systemui.globalactions.GlobalActionsComponent;
 import com.android.systemui.keyboard.KeyboardUI;
+import com.android.systemui.keyguard.KeyguardViewConfigurator;
 import com.android.systemui.keyguard.KeyguardViewMediator;
 import com.android.systemui.log.SessionTracker;
 import com.android.systemui.media.RingtonePlayer;
@@ -35,11 +37,12 @@ import com.android.systemui.power.PowerUI;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.shortcut.ShortcutKeyDispatcher;
 import com.android.systemui.statusbar.notification.InstantAppNotifier;
+import com.android.systemui.statusbar.phone.ScrimController;
+import com.android.systemui.statusbar.phone.StatusBarHeadsUpChangeListener;
 import com.android.systemui.theme.ThemeOverlayController;
 import com.android.systemui.toast.ToastUI;
 import com.android.systemui.usb.StorageNotification;
 import com.android.systemui.util.NotificationChannels;
-import com.android.systemui.util.leak.GarbageMonitor;
 import com.android.systemui.volume.VolumeUI;
 import com.android.systemui.wmshell.WMShell;
 
@@ -65,12 +68,6 @@ abstract class SystemUIGoCoreStartableModule {
     @IntoMap
     @ClassKey(ClipboardListener.class)
     abstract CoreStartable bindClipboardListener(ClipboardListener clipboardListener);
-
-    /** Inject into GarbageMonitor.Service. */
-    @Binds
-    @IntoMap
-    @ClassKey(GarbageMonitor.class)
-    abstract CoreStartable bindGarbageMonitorService(GarbageMonitor.Service garbageMonitorService);
 
     /** Inject into GlobalActionsComponent. */
     @Binds
@@ -191,15 +188,37 @@ abstract class SystemUIGoCoreStartableModule {
     @ClassKey(VolumeUI.class)
     abstract CoreStartable bindVolumeUI(VolumeUI volumeUi);
 
-    /** Inject into WindowMagnification. */
+    /** Inject into Magnification. */
     @Binds
     @IntoMap
-    @ClassKey(WindowMagnification.class)
-    abstract CoreStartable bindWindowMagnification(WindowMagnification windowMagnification);
+    @ClassKey(Magnification.class)
+    abstract CoreStartable bindMagnification(Magnification magnification);
 
     /** Inject into WMShell. */
     @Binds
     @IntoMap
     @ClassKey(WMShell.class)
     abstract CoreStartable bindWMShell(WMShell wmShell);
+
+    @Binds
+    @IntoMap
+    @ClassKey(KeyguardViewConfigurator.class)
+    abstract CoreStartable bindKeyguardViewConfigurator(KeyguardViewConfigurator impl);
+
+    /** Inject into ScrimController. */
+    @Binds
+    @IntoMap
+    @ClassKey(ScrimController.class)
+    abstract CoreStartable bindScrimController(ScrimController scrimController);
+
+    @Binds
+    @IntoMap
+    @ClassKey(StatusBarHeadsUpChangeListener.class)
+    abstract CoreStartable bindStatusBarHeadsUpChangeListener(StatusBarHeadsUpChangeListener impl);
+
+    /** Inject into BackActionInteractor. */
+    @Binds
+    @IntoMap
+    @ClassKey(BackActionInteractor.class)
+    abstract CoreStartable bindBackActionInteractor(BackActionInteractor backActionInteractor);
 }
