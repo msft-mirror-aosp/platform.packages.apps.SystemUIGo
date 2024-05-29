@@ -34,6 +34,8 @@ import com.android.systemui.display.ui.viewmodel.ConnectingDisplayViewModel;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
+import com.android.systemui.keyguard.ui.view.layout.blueprints.KeyguardBlueprintModule;
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule;
 import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.media.muteawait.MediaMuteAwaitConnectionCli;
 import com.android.systemui.media.nearby.NearbyMediaDevicesManager;
@@ -90,6 +92,8 @@ import javax.inject.Named;
         ConnectingDisplayViewModel.StartableModule.class,
         GestureModule.class,
         HeadsUpModule.class,
+        KeyguardBlueprintModule.class,
+        KeyguardSectionsModule.class,
         MediaModule.class,
         MediaMuteAwaitConnectionCli.StartableModule.class,
         MultiUserUtilsModule.class,
