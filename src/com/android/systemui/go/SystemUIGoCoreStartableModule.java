@@ -19,12 +19,9 @@ package com.android.systemui.go;
 import com.android.keyguard.KeyguardBiometricLockoutLogger;
 import com.android.systemui.CoreStartable;
 import com.android.systemui.LatencyTester;
-import com.android.systemui.ScreenDecorations;
 import com.android.systemui.SliceBroadcastRelayHandler;
-import com.android.systemui.accessibility.SystemActions;
 import com.android.systemui.accessibility.Magnification;
 import com.android.systemui.back.domain.interactor.BackActionInteractor;
-import com.android.systemui.biometrics.AuthController;
 import com.android.systemui.clipboardoverlay.ClipboardListener;
 import com.android.systemui.dagger.qualifiers.PerUser;
 import com.android.systemui.globalactions.GlobalActionsComponent;
@@ -33,17 +30,13 @@ import com.android.systemui.keyguard.KeyguardViewConfigurator;
 import com.android.systemui.keyguard.KeyguardViewMediator;
 import com.android.systemui.log.SessionTracker;
 import com.android.systemui.media.RingtonePlayer;
-import com.android.systemui.power.PowerUI;
-import com.android.systemui.recents.Recents;
 import com.android.systemui.shortcut.ShortcutKeyDispatcher;
 import com.android.systemui.statusbar.notification.InstantAppNotifier;
 import com.android.systemui.statusbar.phone.ScrimController;
 import com.android.systemui.statusbar.phone.StatusBarHeadsUpChangeListener;
 import com.android.systemui.theme.ThemeOverlayController;
-import com.android.systemui.toast.ToastUI;
 import com.android.systemui.usb.StorageNotification;
 import com.android.systemui.util.NotificationChannels;
-import com.android.systemui.volume.VolumeUI;
 import com.android.systemui.wmshell.WMShell;
 
 import dagger.Binds;
@@ -52,17 +45,15 @@ import dagger.multibindings.ClassKey;
 import dagger.multibindings.IntoMap;
 
 /**
- * Collection of {@link CoreStartable}s that should be run on Android Go. This is forked from
- * {@link com.android.systemui.dagger.SystemUICoreStartableModule}.
+ * DEPRECATED: DO NOT ADD THINGS TO THIS FILE.
+ *
+ * Add a feature specific dagger module for what you are working on. Bind your CoreStartable there.
+ * Include that module where it is needed.
+ *
+ * @deprecated
  */
 @Module
 abstract class SystemUIGoCoreStartableModule {
-    /** Inject into AuthController. */
-    @Binds
-    @IntoMap
-    @ClassKey(AuthController.class)
-    abstract CoreStartable bindAuthController(AuthController authController);
-
     /** Inject into ClipboardListener. */
     @Binds
     @IntoMap
@@ -114,29 +105,11 @@ abstract class SystemUIGoCoreStartableModule {
     @PerUser
     abstract CoreStartable bindNotificationChannels(NotificationChannels notificationChannels);
 
-    /** Inject into PowerUI. */
-    @Binds
-    @IntoMap
-    @ClassKey(PowerUI.class)
-    abstract CoreStartable bindPowerUI(PowerUI powerUI);
-
-    /** Inject into Recents. */
-    @Binds
-    @IntoMap
-    @ClassKey(Recents.class)
-    abstract CoreStartable bindRecents(Recents recents);
-
     /** Inject into RingtonePlayer. */
     @Binds
     @IntoMap
     @ClassKey(RingtonePlayer.class)
     abstract CoreStartable bind(RingtonePlayer ringtonePlayer);
-
-    /** Inject into ScreenDecorations. */
-    @Binds
-    @IntoMap
-    @ClassKey(ScreenDecorations.class)
-    abstract CoreStartable bindScreenDecorations(ScreenDecorations screenDecorations);
 
     /** Inject into SessionTracker. */
     @Binds
@@ -163,30 +136,12 @@ abstract class SystemUIGoCoreStartableModule {
     @ClassKey(StorageNotification.class)
     abstract CoreStartable bindStorageNotification(StorageNotification storageNotification);
 
-    /** Inject into SystemActions. */
-    @Binds
-    @IntoMap
-    @ClassKey(SystemActions.class)
-    abstract CoreStartable bindSystemActions(SystemActions systemActions);
-
     /** Inject into ThemeOverlayController. */
     @Binds
     @IntoMap
     @ClassKey(ThemeOverlayController.class)
     abstract CoreStartable bindThemeOverlayController(
             ThemeOverlayController themeOverlayController);
-
-    /** Inject into ToastUI. */
-    @Binds
-    @IntoMap
-    @ClassKey(ToastUI.class)
-    abstract CoreStartable bindToastUI(ToastUI toastUi);
-
-    /** Inject into VolumeUI. */
-    @Binds
-    @IntoMap
-    @ClassKey(VolumeUI.class)
-    abstract CoreStartable bindVolumeUI(VolumeUI volumeUi);
 
     /** Inject into Magnification. */
     @Binds
