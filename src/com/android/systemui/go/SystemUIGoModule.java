@@ -24,7 +24,9 @@ import android.hardware.SensorPrivacyManager;
 
 import com.android.keyguard.KeyguardViewController;
 import com.android.systemui.ScreenDecorationsModule;
+import com.android.systemui.accessibility.AccessibilityModule;
 import com.android.systemui.accessibility.SystemActionsModule;
+import com.android.systemui.accessibility.data.repository.AccessibilityRepositoryModule;
 import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.biometrics.dagger.BiometricsModule;
 import com.android.systemui.dagger.GlobalRootComponent;
@@ -85,6 +87,8 @@ import javax.inject.Named;
  * Android Go. This is forked from {@link ReferenceSystemUIModule}
  */
 @Module(includes = {
+        AccessibilityModule.class,
+        AccessibilityRepositoryModule.class,
         AospPolicyModule.class,
         BatterySaverModule.class,
         BiometricsModule.class,
