@@ -26,6 +26,7 @@ import com.android.systemui.dagger.SystemUIModule;
 import com.android.systemui.keyguard.dagger.KeyguardModule;
 import com.android.systemui.keyguard.CustomizationProvider;
 import com.android.systemui.recents.RecentsModule;
+import com.android.systemui.scene.SceneContainerFrameworkModule;
 import com.android.systemui.statusbar.dagger.CentralSurfacesModule;
 import com.android.systemui.statusbar.NotificationInsetsModule;
 import com.android.systemui.statusbar.QsFrameTranslateModule;
@@ -45,6 +46,7 @@ import dagger.Subcomponent;
         SystemUIGoCoreStartableModule.class,
         KeyguardModule.class,
         RecentsModule.class,
+        SceneContainerFrameworkModule.class,
         CentralSurfacesModule.class,
         NotificationInsetsModule.class,
         QsFrameTranslateModule.class,
