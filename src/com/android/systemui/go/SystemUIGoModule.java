@@ -29,6 +29,7 @@ import com.android.systemui.accessibility.SystemActionsModule;
 import com.android.systemui.accessibility.data.repository.AccessibilityRepositoryModule;
 import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.biometrics.dagger.BiometricsModule;
+import com.android.systemui.clipboardoverlay.dagger.ClipboardOverlaySuppressionModule;
 import com.android.systemui.dagger.GlobalRootComponent;
 import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
@@ -53,6 +54,7 @@ import com.android.systemui.recents.RecentsModule;
 import com.android.systemui.rotationlock.RotationLockModule;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
 import com.android.systemui.settings.MultiUserUtilsModule;
+import com.android.systemui.settings.UserTracker;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeModule;
 import com.android.systemui.statusbar.CommandQueue;
@@ -63,6 +65,7 @@ import com.android.systemui.statusbar.dagger.StartCentralSurfacesModule;
 import com.android.systemui.statusbar.phone.DozeServiceHost;
 import com.android.systemui.statusbar.phone.HeadsUpModule;
 import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
+import com.android.systemui.statusbar.phone.dagger.StatusBarPhoneModule;
 import com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragmentStartableModule;
 import com.android.systemui.statusbar.policy.AospPolicyModule;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
@@ -92,6 +95,7 @@ import javax.inject.Named;
         AospPolicyModule.class,
         BatterySaverModule.class,
         BiometricsModule.class,
+        ClipboardOverlaySuppressionModule.class,
         CollapsedStatusBarFragmentStartableModule.class,
         ConnectingDisplayViewModel.StartableModule.class,
         GestureModule.class,
@@ -110,6 +114,7 @@ import javax.inject.Named;
         RotationLockModule.class,
         ScreenDecorationsModule.class,
         ShadeModule.class,
+        StatusBarPhoneModule.class,
         StartCentralSurfacesModule.class,
         SystemActionsModule.class,
         SysUIUnfoldStartableModule.class,
@@ -146,9 +151,9 @@ public abstract class SystemUIGoModule {
     @Provides
     @SysUISingleton
     static IndividualSensorPrivacyController provideIndividualSensorPrivacyController(
-            SensorPrivacyManager sensorPrivacyManager) {
+            SensorPrivacyManager sensorPrivacyManager, UserTracker userTracker) {
         IndividualSensorPrivacyController ispC = new IndividualSensorPrivacyControllerImpl(
-                sensorPrivacyManager);
+                sensorPrivacyManager, userTracker);
         ispC.init();
         return ispC;
     }
