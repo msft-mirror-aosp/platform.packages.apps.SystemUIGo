@@ -37,6 +37,7 @@ import com.android.systemui.display.ui.viewmodel.ConnectingDisplayViewModel;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
+import com.android.systemui.emergency.EmergencyGestureModule;
 import com.android.systemui.keyguard.ui.view.layout.blueprints.KeyguardBlueprintModule;
 import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule;
 import com.android.systemui.media.dagger.MediaModule;
@@ -62,6 +63,7 @@ import com.android.systemui.statusbar.NotificationLockscreenUserManager;
 import com.android.systemui.statusbar.NotificationLockscreenUserManagerImpl;
 import com.android.systemui.statusbar.NotificationShadeWindowController;
 import com.android.systemui.statusbar.dagger.StartCentralSurfacesModule;
+import com.android.systemui.statusbar.notification.dagger.ReferenceNotificationsModule;
 import com.android.systemui.statusbar.phone.DozeServiceHost;
 import com.android.systemui.statusbar.phone.HeadsUpModule;
 import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
@@ -98,6 +100,7 @@ import javax.inject.Named;
         ClipboardOverlaySuppressionModule.class,
         CollapsedStatusBarFragmentStartableModule.class,
         ConnectingDisplayViewModel.StartableModule.class,
+        EmergencyGestureModule.class,
         GestureModule.class,
         HeadsUpModule.class,
         KeyguardBlueprintModule.class,
@@ -110,6 +113,7 @@ import javax.inject.Named;
         PowerModule.class,
         QSModule.class,
         RecentsModule.class,
+        ReferenceNotificationsModule.class,
         ReferenceScreenshotModule.class,
         RotationLockModule.class,
         ScreenDecorationsModule.class,
