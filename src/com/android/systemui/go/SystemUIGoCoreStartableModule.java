@@ -32,7 +32,7 @@ import com.android.systemui.log.SessionTracker;
 import com.android.systemui.media.RingtonePlayer;
 import com.android.systemui.shortcut.ShortcutKeyDispatcher;
 import com.android.systemui.statusbar.notification.InstantAppNotifier;
-import com.android.systemui.statusbar.phone.StatusBarHeadsUpChangeListener;
+import com.android.systemui.statusbar.notification.headsup.StatusBarHeadsUpChangeListener;
 import com.android.systemui.theme.ThemeOverlayController;
 import com.android.systemui.usb.StorageNotification;
 import com.android.systemui.util.NotificationChannels;
