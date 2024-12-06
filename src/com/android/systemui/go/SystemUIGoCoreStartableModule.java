@@ -32,8 +32,7 @@ import com.android.systemui.log.SessionTracker;
 import com.android.systemui.media.RingtonePlayer;
 import com.android.systemui.shortcut.ShortcutKeyDispatcher;
 import com.android.systemui.statusbar.notification.InstantAppNotifier;
-import com.android.systemui.statusbar.phone.ScrimController;
-import com.android.systemui.statusbar.phone.StatusBarHeadsUpChangeListener;
+import com.android.systemui.statusbar.notification.headsup.StatusBarHeadsUpChangeListener;
 import com.android.systemui.theme.ThemeOverlayController;
 import com.android.systemui.usb.StorageNotification;
 import com.android.systemui.util.NotificationChannels;
@@ -159,12 +158,6 @@ abstract class SystemUIGoCoreStartableModule {
     @IntoMap
     @ClassKey(KeyguardViewConfigurator.class)
     abstract CoreStartable bindKeyguardViewConfigurator(KeyguardViewConfigurator impl);
-
-    /** Inject into ScrimController. */
-    @Binds
-    @IntoMap
-    @ClassKey(ScrimController.class)
-    abstract CoreStartable bindScrimController(ScrimController scrimController);
 
     @Binds
     @IntoMap
