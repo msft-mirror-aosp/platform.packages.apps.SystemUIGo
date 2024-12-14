@@ -56,6 +56,7 @@ import com.android.systemui.rotationlock.RotationLockModule;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
 import com.android.systemui.settings.MultiUserUtilsModule;
 import com.android.systemui.settings.UserTracker;
+import com.android.systemui.settings.brightness.dagger.BrightnessSliderModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeModule;
 import com.android.systemui.statusbar.CommandQueue;
@@ -97,6 +98,7 @@ import javax.inject.Named;
         AospPolicyModule.class,
         BatterySaverModule.class,
         BiometricsModule.class,
+        BrightnessSliderModule.class,
         ClipboardOverlayOverrideModule.class,
         CollapsedStatusBarFragmentStartableModule.class,
         ConnectingDisplayViewModel.StartableModule.class,
