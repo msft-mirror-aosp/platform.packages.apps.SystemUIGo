@@ -30,6 +30,7 @@ import com.android.systemui.accessibility.data.repository.AccessibilityRepositor
 import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.biometrics.dagger.BiometricsModule;
 import com.android.systemui.clipboardoverlay.dagger.ClipboardOverlayOverrideModule;
+import com.android.systemui.communal.posturing.dagger.NoopPosturingModule;
 import com.android.systemui.dagger.GlobalRootComponent;
 import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
@@ -112,6 +113,7 @@ import javax.inject.Named;
         MultiUserUtilsModule.class,
         NavigationBarControllerModule.class,
         NearbyMediaDevicesManager.StartableModule.class,
+        NoopPosturingModule.class,
         PowerModule.class,
         QSModule.class,
         RecentsModule.class,
