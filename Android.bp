@@ -26,6 +26,9 @@ android_library {
     resource_dirs: [
         "res",
     ],
+    javacflags: [
+        "-Adagger.useBindingGraphFix=ENABLED",
+    ],
     static_libs: [
         "SystemUI-core",
         "SystemUIPluginLib",
