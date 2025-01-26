@@ -26,6 +26,9 @@ android_library {
     resource_dirs: [
         "res",
     ],
+    javacflags: [
+        "-Adagger.useBindingGraphFix=ENABLED",
+    ],
     static_libs: [
         "SystemUI-core",
         "SystemUIPluginLib",
@@ -53,6 +56,10 @@ android_app {
     system_ext_specific: true,
     certificate: "platform",
     privileged: true,
+
+    javacflags: [
+        "-Adagger.useBindingGraphFix=ENABLED",
+    ],
 
     kotlincflags: ["-Xjvm-default=all"],
 
