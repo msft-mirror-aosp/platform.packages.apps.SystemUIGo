@@ -16,6 +16,7 @@
 
 package {
     default_applicable_licenses: ["Android-Apache-2.0"],
+    default_team: "trendy_team_android_go",
 }
 
 android_library {
@@ -46,7 +47,7 @@ android_app {
         "wmshell_defaults",
     ],
     static_libs: [
-        "SystemUIGo-core"
+        "SystemUIGo-core",
     ],
     overrides: [
         "SystemUI",
