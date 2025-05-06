@@ -48,6 +48,7 @@ import com.android.systemui.navigationbar.NavigationBarControllerModule;
 import com.android.systemui.navigationbar.gestural.GestureModule;
 import com.android.systemui.plugins.qs.QSFactory;
 import com.android.systemui.power.dagger.PowerModule;
+import com.android.systemui.qs.QSFragmentStartableModule;
 import com.android.systemui.qs.dagger.QSModule;
 import com.android.systemui.qs.tileimpl.QSFactoryImpl;
 import com.android.systemui.recents.Recents;
@@ -115,6 +116,7 @@ import javax.inject.Named;
         NearbyMediaDevicesManager.StartableModule.class,
         NoopPosturingModule.class,
         PowerModule.class,
+        QSFragmentStartableModule.class,
         QSModule.class,
         RecentsModule.class,
         ReferenceNotificationsModule.class,
