@@ -44,6 +44,9 @@ import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsMod
 import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.media.muteawait.MediaMuteAwaitConnectionCli;
 import com.android.systemui.media.nearby.NearbyMediaDevicesManager;
+import com.android.systemui.Flags;
+import com.android.systemui.minmode.MinModeManager;
+import com.android.systemui.minmode.MinModeManagerImpl;
 import com.android.systemui.navigationbar.NavigationBarControllerModule;
 import com.android.systemui.navigationbar.gestural.GestureModule;
 import com.android.systemui.plugins.qs.QSFactory;
@@ -88,7 +91,9 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
+import java.util.Optional;
 import javax.inject.Named;
+import javax.inject.Provider;
 
 /**
  * A dagger module for overriding the default implementations of injected System UI components on
@@ -207,4 +212,15 @@ public abstract class SystemUIGoModule {
 
     @Binds
     abstract DozeHost provideDozeHost(DozeServiceHost dozeServiceHost);
+
+    @Provides
+    @SysUISingleton
+    static Optional<MinModeManager> provideMinModeManager(
+            Provider<MinModeManagerImpl> minModeManagerProvider) {
+        if (Flags.enableMinmode()) {
+            return Optional.of(minModeManagerProvider.get());
+        } else {
+            return Optional.empty();
+        }
+    }
 }
