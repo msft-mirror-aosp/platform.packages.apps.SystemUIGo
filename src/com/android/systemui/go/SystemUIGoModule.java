@@ -34,6 +34,9 @@ import com.android.systemui.communal.posturing.dagger.NoopPosturingModule;
 import com.android.systemui.dagger.GlobalRootComponent;
 import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
+import com.android.systemui.display.dagger.SystemUIDisplaySubcomponent;
+import com.android.systemui.display.dagger.SystemUIPhoneDisplaySubcomponent;
+import com.android.systemui.display.data.repository.DisplayPhoneModule;
 import com.android.systemui.display.ui.viewmodel.ConnectingDisplayViewModel;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
@@ -109,6 +112,7 @@ import javax.inject.Provider;
         ClipboardOverlayOverrideModule.class,
         CollapsedStatusBarFragmentStartableModule.class,
         ConnectingDisplayViewModel.StartableModule.class,
+        DisplayPhoneModule.class,
         EmergencyGestureModule.class,
         GestureModule.class,
         HeadsUpModule.class,
@@ -136,8 +140,14 @@ import javax.inject.Provider;
         ToastModule.class,
         WallpaperModule.class,
         VolumeModule.class,
+}, subcomponents = {
+        SystemUIPhoneDisplaySubcomponent.class
 })
 public abstract class SystemUIGoModule {
+
+    @Binds
+    abstract SystemUIDisplaySubcomponent.Factory systemUIDisplaySubcomponentFactory(
+            SystemUIPhoneDisplaySubcomponent.Factory factory);
 
     @Binds
     abstract GlobalRootComponent bindGlobalRootComponent(
