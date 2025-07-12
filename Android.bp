@@ -31,6 +31,7 @@ android_library {
         "-Adagger.useBindingGraphFix=ENABLED",
     ],
     static_libs: [
+        "SystemUI-application",
         "SystemUI-core",
         "SystemUIPluginLib",
         "SystemUISharedLib",
