@@ -35,7 +35,7 @@ import com.android.systemui.dagger.GlobalRootComponent;
 import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.display.dagger.SystemUIDisplaySubcomponent;
-import com.android.systemui.display.dagger.SystemUIPhoneDisplaySubcomponent;
+import com.android.systemui.display.dagger.ReferenceSysUIDisplaySubcomponent;
 import com.android.systemui.display.data.repository.DisplayPhoneModule;
 import com.android.systemui.display.ui.viewmodel.ConnectingDisplayViewModel;
 import com.android.systemui.dock.DockManager;
@@ -145,13 +145,13 @@ import javax.inject.Provider;
         WallpaperModule.class,
         VolumeModule.class,
 }, subcomponents = {
-        SystemUIPhoneDisplaySubcomponent.class
+        SystemUIGoDisplaySubcomponent.class
 })
 public abstract class SystemUIGoModule {
 
     @Binds
     abstract SystemUIDisplaySubcomponent.Factory systemUIDisplaySubcomponentFactory(
-            SystemUIPhoneDisplaySubcomponent.Factory factory);
+            SystemUIGoDisplaySubcomponent.Factory factory);
 
     @Binds
     abstract GlobalRootComponent bindGlobalRootComponent(
