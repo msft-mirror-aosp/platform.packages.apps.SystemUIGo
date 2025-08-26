@@ -135,13 +135,6 @@ abstract class SystemUIGoCoreStartableModule {
     @ClassKey(StorageNotification.class)
     abstract CoreStartable bindStorageNotification(StorageNotification storageNotification);
 
-    /** Inject into ThemeOverlayController. */
-    @Binds
-    @IntoMap
-    @ClassKey(ThemeOverlayController.class)
-    abstract CoreStartable bindThemeOverlayController(
-            ThemeOverlayController themeOverlayController);
-
     /** Inject into Magnification. */
     @Binds
     @IntoMap
