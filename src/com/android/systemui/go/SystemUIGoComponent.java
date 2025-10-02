@@ -26,7 +26,6 @@ import com.android.systemui.dagger.SystemUIModule;
 import com.android.systemui.keyguard.dagger.KeyguardModule;
 import com.android.systemui.keyguard.CustomizationProvider;
 import com.android.systemui.recents.RecentsModule;
-import com.android.systemui.rotationlock.DeviceStateAutoRotateModule;
 import com.android.systemui.scene.SceneContainerFrameworkModule;
 import com.android.systemui.statusbar.dagger.CentralSurfacesModule;
 import com.android.systemui.statusbar.NotificationInsetsModule;
@@ -44,7 +43,6 @@ import dagger.Subcomponent;
         DefaultActivityBinder.class,
         DefaultBroadcastReceiverBinder.class,
         DefaultServiceBinder.class,
-        DeviceStateAutoRotateModule.class,
         SystemUIGoCoreStartableModule.class,
         KeyguardModule.class,
         RecentsModule.class,
