@@ -35,7 +35,7 @@ import com.android.systemui.dagger.GlobalRootComponent;
 import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.display.dagger.SystemUIDisplaySubcomponent;
-import com.android.systemui.display.dagger.SystemUIPhoneDisplaySubcomponent;
+import com.android.systemui.display.dagger.ReferenceSysUIDisplaySubcomponent;
 import com.android.systemui.display.data.repository.DisplayPhoneModule;
 import com.android.systemui.display.ui.viewmodel.ConnectingDisplayViewModel;
 import com.android.systemui.dock.DockManager;
@@ -66,7 +66,6 @@ import com.android.systemui.rotationlock.RotationLockModule;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
 import com.android.systemui.settings.MultiUserUtilsModule;
 import com.android.systemui.settings.UserTracker;
-import com.android.systemui.settings.brightness.dagger.BrightnessSliderModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeModule;
 import com.android.systemui.statusbar.CommandQueue;
@@ -110,7 +109,6 @@ import javax.inject.Provider;
         AospPolicyModule.class,
         BatterySaverModule.class,
         BiometricsModule.class,
-        BrightnessSliderModule.class,
         ClipboardOverlayOverrideModule.class,
         CollapsedStatusBarFragmentStartableModule.class,
         ConnectingDisplayViewModel.StartableModule.class,
@@ -145,13 +143,13 @@ import javax.inject.Provider;
         WallpaperModule.class,
         VolumeModule.class,
 }, subcomponents = {
-        SystemUIPhoneDisplaySubcomponent.class
+        SystemUIGoDisplaySubcomponent.class
 })
 public abstract class SystemUIGoModule {
 
     @Binds
     abstract SystemUIDisplaySubcomponent.Factory systemUIDisplaySubcomponentFactory(
-            SystemUIPhoneDisplaySubcomponent.Factory factory);
+            SystemUIGoDisplaySubcomponent.Factory factory);
 
     @Binds
     abstract GlobalRootComponent bindGlobalRootComponent(
