@@ -16,6 +16,7 @@
 
 package com.android.systemui.go;
 
+import com.android.systemui.bundle.phone.PodModulePhone;
 import com.android.systemui.dagger.DefaultActivityBinder;
 import com.android.systemui.dagger.DefaultBroadcastReceiverBinder;
 import com.android.systemui.dagger.DefaultServiceBinder;
@@ -40,6 +41,7 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {
         DependencyProvider.class,
         SystemUIModule.class,
+        PodModulePhone.class,
         DefaultActivityBinder.class,
         DefaultBroadcastReceiverBinder.class,
         DefaultServiceBinder.class,
