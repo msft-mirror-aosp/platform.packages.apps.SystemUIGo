@@ -42,7 +42,7 @@ import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
 import com.android.systemui.dreams.suppression.dagger.NoOpActivityRecognitionModule;
-import com.android.systemui.inputmethod.DefaultImeSwitcherMenuModule;
+import com.android.systemui.inputmethod.ImeSwitcherMenuModule;
 import com.android.systemui.lowlight.dagger.NoopAmbientLightModeMonitorModule;
 import com.android.systemui.emergency.EmergencyGestureModule;
 import com.android.systemui.keyguard.ui.view.layout.blueprints.KeyguardBlueprintModule;
@@ -111,7 +111,7 @@ import javax.inject.Provider;
         BiometricsModule.class,
         ClipboardOverlayOverrideModule.class,
         ConnectingDisplayViewModel.StartableModule.class,
-        DefaultImeSwitcherMenuModule.class,
+        ImeSwitcherMenuModule.class,
         DisplayPhoneModule.class,
         EmergencyGestureModule.class,
         GestureModule.class,
