@@ -86,6 +86,7 @@ import com.android.systemui.statusbar.policy.IndividualSensorPrivacyController;
 import com.android.systemui.statusbar.policy.IndividualSensorPrivacyControllerImpl;
 import com.android.systemui.statusbar.policy.SensorPrivacyController;
 import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
+import com.android.systemui.statusbar.policy.dagger.SmartRepliesInflationModule;
 import com.android.systemui.toast.ToastModule;
 import com.android.systemui.unfold.SysUIUnfoldStartableModule;
 import com.android.systemui.volume.dagger.VolumeModule;
@@ -135,6 +136,7 @@ import javax.inject.Provider;
         RotationLockModule.class,
         ScreenDecorationsModule.class,
         ShadeModule.class,
+        SmartRepliesInflationModule.class,
         StatusBarPhoneModule.class,
         StartCentralSurfacesModule.class,
         SystemActionsModule.class,
