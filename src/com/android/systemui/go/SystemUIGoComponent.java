@@ -26,6 +26,7 @@ import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.SystemUIModule;
 import com.android.systemui.keyguard.dagger.KeyguardModule;
 import com.android.systemui.keyguard.CustomizationProvider;
+import com.android.systemui.notifications.intelligence.rules.ui.NotificationRulesDefaultModule;
 import com.android.systemui.recents.RecentsModule;
 import com.android.systemui.scene.SceneContainerFrameworkModule;
 import com.android.systemui.statusbar.dagger.CentralSurfacesModule;
@@ -51,6 +52,7 @@ import dagger.Subcomponent;
         SceneContainerFrameworkModule.class,
         CentralSurfacesModule.class,
         NotificationInsetsModule.class,
+        NotificationRulesDefaultModule.class,
         QsFrameTranslateModule.class,
         SystemUIGoModule.class})
 public interface SystemUIGoComponent extends SysUIComponent {
